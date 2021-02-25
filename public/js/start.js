@@ -17,7 +17,8 @@ chrome.storage.local.get(["bgData", "name", "text", "weatherOption", "zip"], fun
     greetText.textContent = getGreeting(hour);
     userName.textContent = ` ${items.name}`;
     if (items.text === "white") {
-        document.querySelectorAll(".text").forEach(el => { el.classList.add("dark-bg"); });
+        document.querySelector("div").classList.add("dark-bg");
+        timeDisplay.classList.add("dark-bg");
     }
     document.querySelector("#hero").style.color = items.text;
     timeDisplay.textContent = getTime(date);
