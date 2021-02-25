@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FancyTab Options</title>
+    <link rel="stylesheet" href="css/main.min.css">
+    <script src="js/options.js" defer></script>
+</head>
+<body id="options">
+    <h2 class="inline-block">Your Name:</h2>
+    <input type="text" name="name" id="name">
+    <hr>
+
+    <h2 class="inline-block">Current Background:</h2>
+    <span id="currentBg"></span>
+
+    <h2>Choose a different background</h2>
+    <input type="file" id="file">
+
+    <h2>Change main text color</h2>
+    <p class="f-1">Depending on your background, it may be too light or dark</p>
+    <select name="text" id="text">
+        <option value="black">Black</option>
+        <option value="white">White</option>
+    </select>
+
+    <hr>
+    <h2>Weather</h2>
+    <form action="">
+        <input type="radio" name="weather" id="w-yes" value="yes" required>
+        <label for="w-yes">Visible</label>
+        <input type="radio" name="weather" id="w-no" value="no">
+        <label for="w-no">Not Visible</label>
+        <div class="mt-1">
+            <label for="zip">Zip Code:</label>
+            <input type="text" name="zip" id="zip">
+        </div>
+    </form>
+    <p>United States zip codes only.</p>
+    <p>If you do not put a zip code, weather will not display.</p>
+
+    <div id="status"></div>
+    <div id="extra"></div>
+    <button id="save">Save Changes</button>
+</body>
+</html>
