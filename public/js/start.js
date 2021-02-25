@@ -10,8 +10,6 @@ setInterval(function () {
     timeDisplay.textContent = getTime(date);
 }, 5000);
 
-let greeting = getGreeting(hour);
-
 chrome.storage.local.get(["bgData", "name", "text"], function (items) {
     document.body.style.backgroundImage = `url(${items.bgData})`;
     greetText.textContent = getGreeting(hour);
