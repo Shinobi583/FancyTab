@@ -1,9 +1,10 @@
 function saveOptions() {
     let name = document.querySelector("#name").value;
     let text = document.querySelector("#text").value;
-    let weatherOpt = document.querySelector("form").weather.value;
+    let weatherOpt = document.querySelector("#weatherForm").weather.value;
     let zipCode = document.querySelector("#zip").value;
-    
+    let recentOpt = document.querySelector("#recentForm").recent.value;
+
     let file = document.querySelector("#file").files[0];
     let reader = new FileReader();
 
@@ -33,7 +34,8 @@ function saveOptions() {
         name: name,
         text: text,
         weatherOption: weatherOpt,
-        zip: zipCode
+        zip: zipCode,
+        recentOpt: recentOpt
     }, notifySave);
 }
 
@@ -52,7 +54,7 @@ function notifySave(isSuccess = true) {
             extra.textContent = '';
         }, 10000);
     }
-    
+
     chrome.tabs.query({
         url: "chrome://newtab/"
 
@@ -64,12 +66,13 @@ function notifySave(isSuccess = true) {
 }
 
 function restoreOptions() {
-    chrome.storage.local.get(["bgName", "name", "text", "weatherOption", "zip"], function (items) {
+    chrome.storage.local.get(["bgName", "name", "text", "weatherOption", "zip", "recentOpt"], function (items) {
         document.querySelector("#currentBg").textContent = items.bgName;
         document.querySelector("#name").value = items.name;
         document.querySelector("#text").value = items.text;
-        document.querySelector("form").weather.value = items.weatherOption;
+        document.querySelector("#weatherForm").weather.value = items.weatherOption;
         document.querySelector("#zip").value = items.zip;
+        document.querySelector("#recentForm").recent.value = items.recentOpt;
     });
 }
 

@@ -10,12 +10,12 @@ setInterval(function () {
     timeDisplay.textContent = getTime(date);
 }, 5000);
 
-chrome.storage.local.get(["bgData", "name", "text", "weatherOption", "zip"], function (items) {
+chrome.storage.local.get(["bgData", "name", "text", "weatherOption", "zip", "recentOpt"], function (items) {
     document.body.style.backgroundImage = `url(${items.bgData})`;
     greetText.textContent = getGreeting(hour);
     userName.textContent = ` ${items.name}`;
     if (items.text === "white") {
-        document.querySelector("div").classList.add("dark-bg");
+        document.querySelector("#greeting").classList.add("dark-bg");
         timeDisplay.classList.add("dark-bg");
     }
     document.querySelector("#hero").style.color = items.text;
@@ -24,7 +24,32 @@ chrome.storage.local.get(["bgData", "name", "text", "weatherOption", "zip"], fun
     if (items.weatherOption === "yes") {
         getWeather(items.zip);
     }
+
+    if (items.recentOpt === "yes") {
+        showRecents();
+    }
 });
+
+function showRecents() {
+    const millisecondsPerWeek = 1000 * 60 * 60 * 24 * 7;
+    let oneWeekAgo = new Date().getTime() - millisecondsPerWeek;
+    chrome.history.search({
+        text: '',
+        startTime: oneWeekAgo,
+        maxResults: 5
+    }, function (results) {
+        const sect = document.createElement("section");
+        results.forEach(function (page) {
+            sect.id = "recents";
+            const anchor = document.createElement("a");
+            anchor.className = "recent";
+            anchor.href = page.url;
+            anchor.textContent = page.title;
+            sect.appendChild(anchor);
+        });
+        document.body.appendChild(sect);
+    });
+}
 
 function getGreeting(hour) {
     if (hour < 12) {

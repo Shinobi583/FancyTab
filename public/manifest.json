@@ -3,7 +3,7 @@
     "name": "FancyTab",
     "description": "A fancier version of a new tab!",
     "author": "DeLoach",
-    "version": "2021.2.25",
+    "version": "2021.3.1",
     "icons": {
         "16": "img/head.png",
         "48": "img/head.png",
@@ -11,6 +11,7 @@
     },
     "permissions": [
         "tabs",
+        "history",
         "storage"
     ],
     "chrome_url_overrides": {

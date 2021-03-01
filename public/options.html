@@ -27,7 +27,7 @@
 
     <hr>
     <h2>Weather</h2>
-    <form action="">
+    <form id="weatherForm" action="">
         <input type="radio" name="weather" id="w-yes" value="yes" required>
         <label for="w-yes">Visible</label>
         <input type="radio" name="weather" id="w-no" value="no">
@@ -40,6 +40,17 @@
     <p>United States zip codes only.</p>
     <p>If you do not put a zip code, weather will not display.</p>
 
+    <hr>
+    <h2>Recent Pages</h2>
+    <p>Shows up to 5 most recent visited web pages</p>
+    <form id="recentForm" action="">
+        <input type="radio" name="recent" value="yes" required>
+        <label>Visible</label>
+        <input type="radio" name="recent" value="no">
+        <label>Not Visible</label>
+    </form>
+
+    <hr>
     <div id="status"></div>
     <div id="extra"></div>
     <button id="save">Save Changes</button>
