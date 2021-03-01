@@ -26,7 +26,16 @@
     </select>
 
     <hr>
+    <h2>Recent Pages</h2>
+    <p>Shows up to 5 most recent visited web pages</p>
+    <form id="recentForm" action="">
+        <input type="radio" name="recent" value="yes" required>
+        <label>Visible</label>
+        <input type="radio" name="recent" value="no">
+        <label>Not Visible</label>
+    </form>
 
+    <hr>
     <div id="status"></div>
     <div id="extra"></div>
     <button id="save">Save Changes</button>

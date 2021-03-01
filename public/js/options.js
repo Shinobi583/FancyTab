@@ -1,6 +1,7 @@
 function saveOptions() {
     let name = document.querySelector("#name").value;
     let text = document.querySelector("#text").value;
+    let recentOpt = document.querySelector("#recentForm").recent.value;
     
     let file = document.querySelector("#file").files[0];
     let reader = new FileReader();
@@ -29,7 +30,8 @@ function saveOptions() {
     // Set the rest and notify of save.
     chrome.storage.local.set({
         name: name,
-        text: text
+        text: text,
+        recentOpt: recentOpt
     }, notifySave);
 }
 
@@ -60,10 +62,11 @@ function notifySave(isSuccess = true) {
 }
 
 function restoreOptions() {
-    chrome.storage.local.get(["bgName", "name", "text"], function (items) {
+    chrome.storage.local.get(["bgName", "name", "text", "recentOpt"], function (items) {
         document.querySelector("#currentBg").textContent = items.bgName;
         document.querySelector("#name").value = items.name;
         document.querySelector("#text").value = items.text;
+        document.querySelector("#recentForm").recent.value = items.recentOpt;
     });
 }
 
