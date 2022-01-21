@@ -2,7 +2,6 @@ function saveOptions() {
     let name = document.querySelector("#name").value;
     let text = document.querySelector("#text").value;
     let recentOpt = document.querySelector("#recentForm").recent.value;
-    
     let file = document.querySelector("#file").files[0];
     let reader = new FileReader();
 
@@ -50,7 +49,7 @@ function notifySave(isSuccess = true) {
             extra.textContent = '';
         }, 10000);
     }
-    
+
     chrome.tabs.query({
         url: "chrome://newtab/"
 

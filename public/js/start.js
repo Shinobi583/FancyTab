@@ -24,6 +24,10 @@ chrome.storage.local.get(["bgData", "name", "text", "recentOpt"], function (item
     if (items.recentOpt === "yes") {
         showRecents();
     }
+
+    if (items.recentOpt === "yes") {
+        showRecents();
+    }
 });
 
 function showRecents() {
